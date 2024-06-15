@@ -13,9 +13,16 @@ app.use(cors({
 
 }));
 
-app.use(express.json({limit: "16kb"}));
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(cookieParser());
+
+//export router
+import registerRouter from "../scr/routes/user.router.js";
+
+// route declaration
+
+app.use("/api/v1/users", registerRouter);
 
 export{app};
